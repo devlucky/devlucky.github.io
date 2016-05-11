@@ -1,5 +1,9 @@
 ---
-layout: kakapo-swift
+layout: documentation
+title: Kakapo
+motto: Next generation mocking framework in Swift
+image_path: kakapo.gif
+project_url: https://github.com/devlucky/Kakapo
 ---
 
 {% include toc.md %}
