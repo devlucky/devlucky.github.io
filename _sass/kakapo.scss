@@ -76,9 +76,15 @@ ul{
       transition: transform .2s;  
     }
   }
+  &.js-banner:after{
+    background-image: url('/assets/images/js-bg.jpg');
+  }
+  &.swift-banner:after{
+    background-image: url('/assets/images/swift-bg.jpg');
+  }
   &:after{
     content: " ";
-    background: url('/assets/images/background.jpg') no-repeat;
+    background-repeat: no-repeat;
     background-size: cover;
     top: 0;
     left: 0;

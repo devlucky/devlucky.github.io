@@ -1,5 +1,5 @@
 ---
-layout: kakapo
+layout: kakapo-js
 ---
 
 {% include toc.md %}

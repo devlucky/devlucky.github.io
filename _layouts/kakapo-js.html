@@ -3,7 +3,7 @@
   {% include head.html %}
   <body>
     {% include github_ribbon.html %}
-    <section id="banner">
+    <section id="banner" class="js-banner">
       <h1>
       Kakapo.js
       </h1>
@@ -11,17 +11,9 @@
         <div class="motto-line"></div>
         Next generation mocking framework in Javascript
       </div>
-      <a href="#docs">
-        <div class="learn-more">
-          <img class="kakapo" src="assets/images/kakapo.gif" alt="">
-          Learn more
-          <img class="arrow" src="assets/images/arrow.svg" alt="learn-more">
-        </div>
-      </a>
+      {% include learn_more.html %}
     </section>
-    <section id="docs">
-      {{content}}
-    </section>
+    <section id="docs">{{content}}</section>
     <script src="js/app.js"></script>
   </body>
 </html>
