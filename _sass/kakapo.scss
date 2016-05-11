@@ -1,5 +1,4 @@
 @import "kakapo/config";
-@import "kakapo/monokai-sublime.css";
 
 *{
   box-sizing: border-box;
@@ -15,9 +14,17 @@ body{
 a{
   color: inherit;
   text-decoration: none;
+  &:visited{
+    color: inherit;
+  }
+  &:hover{
+    color: inherit;
+    text-decoration: none;
+  }
 }
 ul{
   list-style: none;
+  margin: 0;
 }
 
 .kakapo{
@@ -110,16 +117,31 @@ ul{
     text-align: center;
     width: 300px;
 
-    ul{
+    #markdown-toc{
       border-top: 1px solid $pink;
+      text-align: left;
     }
     li{
-      padding: 10px;
       cursor: pointer;
       transition: background-color .3s;
+      
+      ul a{
+        padding-left: 20px;
+      }
 
       &:hover{
-        background-color: #f4d8d3;
+        
+      }
+
+      a{
+        padding: 10px;
+        width: 100%;
+        display: inline-block;
+        border-bottom: 1px solid;
+
+        &:hover{
+          background-color: #f4d8d3;
+        }
       }
       + li{
         
