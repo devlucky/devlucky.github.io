@@ -1,21 +1,21 @@
 {
-  "name": "kakapo-landing",
+  "name": "devlucky-landing",
   "version": "0.1.0",
-  "description": "Kakapo.js landing page & examples",
+  "description": "Devlucky landing page & examples",
   "main": "index.js",
   "scripts": {
     "watch": "watchify _js/index.js -o js/app.js -t [ babelify --presets [ es2015 ] ] -v"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/devlucky/Kakapo.js.git"
+    "url": "git+https://github.com/devlucky/devlucky.github.io.git"
   },
   "author": "zzarcon",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/devlucky/Kakapo.js/issues"
+    "url": "https://github.com/devlucky/devlucky.github.io/issues"
   },
-  "homepage": "https://github.com/devlucky/Kakapo.js#readme",
+  "homepage": "https://github.com/devlucky/devlucky.github.io#readme",
   "devDependencies": {
     "babel-cli": "^6.7.5",
     "babel-core": "^6.7.6",
@@ -26,6 +26,6 @@
     "watchify": "^3.7.0"
   },
   "dependencies": {
-    "highlight.js": "^9.3.0"
+    
   }
 }
