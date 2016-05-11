@@ -1,5 +1,9 @@
 ---
-layout: kakapo-js
+layout: documentation
+title: Kakapo.js
+motto: Next generation mocking framework in Javascript
+image_path: kakapo.gif
+project_url: https://github.com/devlucky/Kakapo.js
 ---
 
 {% include toc.md %}
