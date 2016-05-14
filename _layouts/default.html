@@ -2,10 +2,21 @@
 <html>
   {% include head.html %}
   <body>
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
-    </div>
+    <section id="team">
+      <ul>
+        {% for member in site.team %}
+          <li>
+            <img src="assets/images/{{member.avatar}}" alt="{{member.name}}">
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+    <section id="projects">
+      <ul>
+        {% for project in site.projects %}
+          <li>{{project.title}}</li>
+        {% endfor %}
+      </ul>
+    </section>
   </body>
 </html>

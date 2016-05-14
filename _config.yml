@@ -2,10 +2,9 @@
 title: Devlucky
 email: devluucky@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
+  A bunch of colleagues writing about swift, javascript, ruby, go, algorithms, performance and coding stories
+  @joanromano @ManzoPower @zzarcon @rpunkfu @groyoh
+baseurl: ""
 assets-path: "/assets/"
 images-path: "/assets/images/"
 permalink: "/:title"
@@ -13,6 +12,27 @@ url: "http://devlucky.github.io"
 twitter_username: devluckyness
 github_username:  devlucky
 medium_username: devlucky
+projects: 
+  - title: Kakapo.js 
+    link: kakapo-js
+  - title: Kakapo Swift 
+    link: kakapo-swift
+team: 
+  - name: Hector
+    twitter: zzarcon
+    avatar: hector-picture.jpeg
+  - name: Joan 
+    twitter: joanromano
+    avatar: joan-picture.jpeg
+  - name: Alex
+    twitter: ManzoPower
+    avatar: alex-picture.png
+  - name: Oskar
+    twitter: rpunkfu
+    avatar: oskar-picture.jpg
+  - name: Yohan 
+    twitter: groyoh
+    avatar: yohan-picture.jpg
 
 # Build settings
 markdown: kramdown

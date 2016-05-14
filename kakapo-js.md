@@ -4,6 +4,7 @@ title: Kakapo.js
 motto: Next generation mocking framework in Javascript
 image_path: kakapo.gif
 project_url: https://github.com/devlucky/Kakapo.js
+section_class: js-banner
 ---
 
 {% include toc.md %}
