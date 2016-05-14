@@ -3,28 +3,35 @@
   {% include head.html %}
   <body class="home-page">
     <section id="bio">
-      <div class="site-logo">
-        <img src="assets/images/devlucky-logo.png" alt="Logo">
+      <div class="bio-content">
+        <div class="bio-content-left">
+          <div class="site-logo">
+            <img src="assets/images/devlucky-logo.png" alt="Logo">
+          </div>
+          <div class="site-title">{{site.title}}</div>
+          
+        </div>
+        <div class="bio-content-right">
+          <div class="site-description">{{site.description}}</div>
+          <ul class="social-links">
+            <li>
+              <a href="//twitter.com/{{site.twitter_username}}" target="_blank">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a href="//github.com/{{site.github_username}}" target="_blank">
+                <i class="fa fa-github" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a href="//medium.com/@{{site.medium_username}}" target="_blank">
+                <i class="fa fa-medium" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="site-title">{{site.title}}</div>
-      <div class="site-description">{{site.description}}</div>
-      <ul class="social-links">
-        <li>
-          <a href="//twitter.com/{{site.twitter_username}}" target="_blank">
-            <i class="fa fa-twitter" aria-hidden="true"></i>
-          </a>
-        </li>
-        <li>
-          <a href="//github.com/{{site.github_username}}" target="_blank">
-            <i class="fa fa-github" aria-hidden="true"></i>
-          </a>
-        </li>
-        <li>
-          <a href="//medium.com/@{{site.medium_username}}" target="_blank">
-            <i class="fa fa-medium" aria-hidden="true"></i>
-          </a>
-        </li>
-      </ul>
     </section>
     <section id="projects">
       <h2>Projects</h2>
@@ -45,7 +52,7 @@
               <a href="{{project.link}}" class="visit-project">
                 Visit
               </a>
-            </div>            
+            </div>
           </li>
         {% endfor %}
       </ul>
