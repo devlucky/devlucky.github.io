@@ -3,7 +3,6 @@ title: Devlucky
 email: devluucky@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   A bunch of colleagues writing about swift, javascript, ruby, go, algorithms, performance and coding stories
-  @joanromano @ManzoPower @zzarcon @rpunkfu @groyoh
 baseurl: ""
 assets-path: "/assets/"
 images-path: "/assets/images/"
@@ -13,10 +12,17 @@ twitter_username: devluckyness
 github_username:  devlucky
 medium_username: devlucky
 projects: 
-  - title: Kakapo.js 
+  - name: Kakapo.js 
     link: kakapo-js
-  - title: Kakapo Swift 
+    header_img: js-bg.jpg
+    logo: kakapo.gif
+    description: The next level mocking framework, discover a new way of declare http mocks, directly in your browser.
+                 Kakapo.js gives you a set of utilities to exactly recreate your real backend.
+  - name: Kakapo Swift 
     link: kakapo-swift
+    header_img: swift-bg.jpg
+    logo: kakapo.gif
+    description: Lorem ipsum Dolore culpa cillum non dolor sit nulla eu est anim non non minim dolor incididunt dolor ut ullamco sint aliqua dolore sed ut ex occaecat Ut aliquip Duis adipisicing non irure cupidatat proident dolore occaecat fugiat sunt cupidatat dolore.
 team: 
   - name: Hector
     twitter: zzarcon
