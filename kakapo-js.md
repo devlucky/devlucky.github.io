@@ -13,6 +13,8 @@ section_class: js-banner
   
 # Getting started
 
+Kakapo its a full featured http mocking library, he allows you to entirely replicate your backend logic in simple and declaritive way directly in the browser. This way you can easily prototype and develop the whole Application without backend and just deactivate Kakapo when you go production. In order to achieve that Kakapo gives you a set of utilities like Routing, Database, Response, Request and so on...
+
 # Examples
 
 ## Basic
@@ -158,30 +160,11 @@ const request = new Request('/users/10/friends/55');
 fetch(request, {method: 'POST', headers}).then(response => {
   console.log(response.message);
 });
-```  
+```
 
-### Fetch & XMLHttpRequest support
-  
+### Fetch & XMLHttpRequest support
 
-```javascript
-import {Router, Server} from 'Kakapo';
-  
-const router = new Router();
-
-router.get('/foo', (request) => '');
-
-const server = new Server();
-
-server.use(router);
-
-// app.js
-fetch('/', users => {
-  console.log(users[0].id === 1);
-  console.log(users[1].id === 2);
-});
-```  
-
-### Database candyness
+Kakapo have Fetch and XMLHttpRequest support by default, but you can always change that if you want
 
 ```javascript
 import {Database, Router, Server} from 'Kakapo';
@@ -201,9 +184,31 @@ fetch('/users', users => {
   console.log(users[0].id === 1);
   console.log(users[1].id === 2);
 });
-```  
+```
 
-### Passthrough
+### Database candyness
+
+```javascript
+import {Database, Router, Server} from 'Kakapo';
+  
+const router = new Router();
+
+router.get('/users/', (request) => {
+  return 
+});
+
+const server = new Server();
+
+server.use(router);
+
+// app.js
+fetch('/users', users => {
+  console.log(users[0].id === 1);
+  console.log(users[1].id === 2);
+});
+```
+
+### Passthrough
 
 ```javascript
 import {Router, Server} from 'Kakapo';
@@ -225,10 +230,10 @@ fetch('/users', users => {
 });
 ```
 
-### Advanced example
+### Advanced example
 
 ```javascript
-import {Database, Router, Server} from 'Kakapo';
+import {Router, Server} from 'Kakapo';
   
 const router = new Router();
 
@@ -245,5 +250,6 @@ fetch('/users', users => {
   console.log(users[0].id === 1);
   console.log(users[1].id === 2);
 });
-```
+```  
+
 </div>
