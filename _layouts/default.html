@@ -36,7 +36,7 @@
     <section id="projects">
       <h2>Projects</h2>
       <ul>
-        {% for project in site.projects %}
+        {% for project in site.data.projects %}
           <li class="project">
             <header style="background-image: url({{site.images-path}}{{project.header_img}});">
               <div class="project-logo">
@@ -60,14 +60,14 @@
     <section id="team">
       <h2>Team</h2>
       <ul>
-        {% for member in site.team %}
+        {% for member in site.data.team %}
           <li>
             <a href="//twitter.com/{{member.twitter}}" target="_blank">
               <img class="member-avatar" src="assets/images/{{member.avatar}}" alt="{{member.name}}">
             </a>
             <div class="member-name">
               <a href="//twitter.com/{{member.twitter}}" target="_blank">
-                {{member.twitter}}
+                {{member.nickname}}
               </a>
             </div>
           </li>
