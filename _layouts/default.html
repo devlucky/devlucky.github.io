@@ -1,20 +1,78 @@
 <!DOCTYPE html>
 <html>
-
   {% include head.html %}
-
-  <body>
-
-    {% include header.html %}
-
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
+  <body class="home-page">
+    <section id="bio">
+      <div class="bio-content">
+        <div class="bio-content-left">
+          <div class="site-logo">
+            <img src="assets/images/devlucky-logo.png" alt="Logo">
+          </div>
+          <div class="site-title">{{site.title}}</div>
+          
+        </div>
+        <div class="bio-content-right">
+          <div class="site-description">{{site.description}}</div>
+          <ul class="social-links">
+            <li>
+              <a href="//twitter.com/{{site.twitter_username}}" target="_blank">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a href="//github.com/{{site.github_username}}" target="_blank">
+                <i class="fa fa-github" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a href="//medium.com/@{{site.medium_username}}" target="_blank">
+                <i class="fa fa-medium" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-
-    {% include footer.html %}
-
+    </section>
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul>
+        {% for project in site.data.projects %}
+          <li class="project">
+            <header style="background-image: url({{site.images-path}}{{project.header_img}});">
+              <div class="project-logo">
+                <img src="https://sdl-stickershop.line.naver.jp/products/0/0/1/1087538/LINEStorePC/main.png?__=20150924" alt="">
+                <!-- <img src="{{site.images-path}}{{project.logo}}" alt="{{project.name}}"> -->
+              </div>
+            </header>
+            <div class="project-content">
+              <div class="project-name">
+                {{project.name}}
+              </div>
+              {{project.description}}
+              <a href="{{project.link}}" class="visit-project">
+                Visit
+              </a>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+    <section id="team">
+      <h2>Team</h2>
+      <ul>
+        {% for member in site.data.team %}
+          <li>
+            <a href="//twitter.com/{{member.twitter}}" target="_blank">
+              <img class="member-avatar" src="assets/images/{{member.avatar}}" alt="{{member.name}}">
+            </a>
+            <div class="member-name">
+              <a href="//twitter.com/{{member.twitter}}" target="_blank">
+                {{member.nickname}}
+              </a>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
   </body>
-
 </html>

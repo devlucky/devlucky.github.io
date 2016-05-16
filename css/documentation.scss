@@ -1,0 +1,157 @@
+---
+
+---
+@import "commons";
+
+html, body {
+}
+body {
+  font-family: "Open Sans", Helvetica, sans-serif;
+}
+.kakapo {
+  height: 50px;
+}
+#banner {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(black, 0.5);
+  color: white;
+
+  h1 {
+    font-size: 55px;
+  }
+  .motto-line {
+    width: 0;
+    height: 2px;
+    background-color: white;
+    margin: 0 auto;
+    animation: motto-line-animation 1.5s 0.2s cubic-bezier(0.31, 0.91, 1, 1) forwards;
+  }
+  .motto {
+    font-size: 25px;
+    margin-top: 10px;
+  }
+  .learn-more {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    word-spacing: 3px;
+    letter-spacing: 4px;
+    animation: learn-more-animation 1s 2s forwards;
+    opacity: 0;
+
+    &:hover {
+      .arrow {
+        transform: translateY(5px);
+      }
+    }
+    .arrow {
+      width: 25px;
+      height: 30px;
+      margin-top: 15px;
+      transition: transform .2s;
+    }
+  }
+  &.js-banner:after {
+    background-image: url('/assets/images/js-bg.jpg');
+  }
+  &.swift-banner:after {
+    background-image: url('/assets/images/swift-bg.jpg');
+  }
+  &:after {
+    content: " ";
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: -1;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+  }
+}
+#docs {
+  background-color: #F2D1CB;
+  display: flex;
+  border-top: 1px solid $pink;
+  height: 100vh;
+  overflow: hidden;
+
+  &.scrollable {
+    .docs-content {
+      overflow: auto;
+    }
+  }
+  .logo {
+    height: 100px;
+    margin: 8px;
+  }
+  .docs-title {
+    color: $pink;
+    border-bottom: 1px solid;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+  }
+  nav {
+    color: #BA6051;
+    text-align: center;
+    width: 300px;
+
+    #markdown-toc {
+      border-top: 1px solid $pink;
+      text-align: left;
+    }
+    li {
+      cursor: pointer;
+      transition: background-color .3s;
+
+      ul a {
+        padding-left: 20px;
+      }
+      &:hover {
+      }
+      a {
+        padding: 10px;
+        width: 100%;
+        display: inline-block;
+        border-bottom: 1px solid;
+
+        &:hover {
+          background-color: #f4d8d3;
+        }
+      }
+      + li {
+      }
+    }
+    a + a li {
+      border-top: 1px solid $pink;
+    }
+  }
+  .docs-content {
+    background-color: white;
+    flex: 1;
+    padding: 20px;
+    overflow: hidden;
+  }
+}
+@keyframes learn-more-animation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes motto-line-animation {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
