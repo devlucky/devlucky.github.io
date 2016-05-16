@@ -35,7 +35,7 @@
     }
     .bio-content-left {
       color: #FF5722;
-      border-right: 2px dashed #aaa;
+      border-right: 1px solid rgba(black, 0.1);
     }
     .bio-content-right {
     }
@@ -73,6 +73,7 @@
   #projects {
     background-color: white;
 
+
     ul {
       display: flex;
       justify-content: center;
@@ -80,34 +81,41 @@
     .project {
       border-radius: 8px;
       width: 320px;
-      background-color: #dde1e2;
+      background-color: #F6F9FE;
       box-shadow: #bdc3c7 0 5px 5px;
       overflow: hidden;
       margin: 20px 20px 30px 20px;
+      display: flex;
+      flex-direction: column;
 
       header {
         position: relative;
         height: 180px;
-        background-size: contain;
-        border-bottom: 8px solid #5cc0ff;
+        background-size: cover;
+        border-bottom: 4px solid #5cc0ff;
+        background-repeat: no-repeat;
+        background-position: center;
       }
       .project-logo {
         position: absolute;
-        bottom: -30px;
+        bottom: -20px;
         border-radius: 50%;
         overflow: hidden;
-        border: 8px solid #5cc0ff;
+        border: 4px solid #5cc0ff;
         left: 50%;
         transform: translateX(-50%);
         background-color: white;
 
         img {
-          height: 40px;
+          height: 60px;
         }
       }
       .project-content {
         color: #81878b;
         padding: 20px 10px 10px 10px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
       }
       .project-name {
         font-weight: bold;
@@ -115,15 +123,24 @@
         padding-bottom: 2px;
         margin-bottom: 15px;
       }
+      .project-description{
+        flex: 1;
+      }
       .visit-project {
         display: block;
-        background-color: #00a2ad;
-        color: white;
+        color: #5CC0FF;
         border-radius: 5px;
         padding: 5px;
         text-align: center;
         width: 200px;
         margin: 10px auto;
+        border: 1px solid;
+        transition: all .2s ease;
+
+        &:hover{
+          background-color: #5CC0FF;
+          color: #F6F9FE;
+        }
       }
     }
   }
@@ -144,7 +161,7 @@
       height: 100px;
       border-radius: 100%;
       transition: box-shadow 0.3s ease;
-      box-shadow: 0px 0px 0px 8px rgba(black, 0.06);
+      box-shadow: 0px 0px 0px 5px rgba(black, 0.06);
       margin-bottom: 5px;
 
       &:hover {
