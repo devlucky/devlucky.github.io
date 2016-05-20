@@ -75,7 +75,7 @@
   }
   #projects {
     background-color: white;
-
+    padding: 15px 0;
 
     ul {
       text-align: center;
@@ -86,9 +86,9 @@
       background-color: #F6F9FE;
       box-shadow: #bdc3c7 0 5px 5px;
       overflow: hidden;
-      margin: 20px 20px 30px 20px;
       display: inline-block;
       height: 475px;
+      margin: 10px;
       
       .project__content{
         display: flex;
