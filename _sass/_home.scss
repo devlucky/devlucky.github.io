@@ -5,7 +5,7 @@
     position: relative;
     
     .section__content{
-      overflow: hidden;
+      overflow: auto;
       padding: 20px;
     }
     h2 {
@@ -156,13 +156,12 @@
     background-color: #F6F9FE;
 
     ul {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      width: 710px;
-      margin: 30px auto;
+      text-align: center;
+      margin: 10px auto;
 
       li {
+        display: inline-block;
+        margin: 15px;
       }
     }
     .member-avatar {
