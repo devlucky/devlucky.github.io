@@ -250,6 +250,188 @@ fetch('/users', users => {
   console.log(users[0].id === 1);
   console.log(users[1].id === 2);
 });
-```  
+```
 
+# Demo Apps
+
+## TODO App
+
+Every project needs a TODO App, so here is the Kakapo one. Straightforward vanilla js app, uses the **fetch api** for the networking part.
+
+[Todo-app repo](https://github.com/devlucky/Kakapo.js/tree/master/examples/todo-app)
+
+![](http://cl.ly/1K1z1G102X1P/Screen%20Recording%202016-05-16%20at%2010.06%20PM.gif)
+
+## Github explorer
+
+Basic github users search example, based 100% on the (Github Api)[https://developer.github.com/v3]. It shows you how easy is to replicate the logic of a backend with Kakapo and iterate faster when building the UI. This example also uses jQuery just to demostrate the compatibility with Kakapo.
+
+[Github explorer repo](https://github.com/devlucky/Kakapo.js/tree/master/examples/github-explorer)
+
+![](https://raw.github.com/devlucky/Kakapo.js/master/examples/github-explorer/demo.gif)
+
+# Components
+
+## Server
+  The Kakapo Server is the main component of the framework, he is charge of activate things and link components like the router or the database.
+
+  **Linking components**
+  
+  So, in order to make your router to start intercepting requests, you must connect him with your server using the *use* method. Also is a good practice to connect your *current database* with your server, that way you will receive her as a parameter in your request handlers. This practice is very useful when you have multiple databases and routers, since you can easily swicth them without rewriting anything, see [Scenarios](#scenarios) section
+
+```javascript
+const myDB = new Database();
+const router = new Router();
+const server = new Server();
+
+router.get('/posts', (request, db) => {
+  console.log(db === myDB);
+});
+
+server.use(myDB);
+server.use(router);
+
+fetch('/posts');
+
+```
+
+## Router
+The Router class gives you the functionality to 
+it has a very intuitive interface, so if you ever had to build any kind of rest api in any server-side language, you are already familiar with the Kakapo router. that allows you to define complex routes (like in a real server)
+
+**Method handling**
+
+Those are the supported http methods
+
+```javascript
+import {Router} from 'kakapo';
+
+const router = new Router();
+
+router.get('/users/:user_id')
+router.post('/users/:user_id')
+router.put('/users/:user_id')
+router.delete('/users/:user_id')
+```
+
+**Request object**
+
+You can access to all the request properties through the request object passed in the request handler
+
+```javascript
+router.get('/posts/:post_id/comments/:comment_id', request => {
+  console.log(request.params.post_id);
+  console.log(request.params.comment_id);
+  console.log(request.query.page);
+  console.log(request.query.count);
+  console.log(request.body);
+  console.log(request.headers);
+});
+
+$.ajax({
+  url: '/posts/1/comments/5?page=1&count=10',
+  data: {text: 'Foo comment'},
+  headers: {'X-Access-token': '12345'}
+)
+```
+
+**Options**
+
+Other useful router options are the **host** and the **requestDelay**, you just need to pass them at the initialization moment
+
+```javascript
+import {Router} from 'kakapo';
+
+const router = new Router({
+  host: 'https://api.github.com',
+  requestDelay: 2000
+});
+```
+  
+## Database
+
+Database along with the Router is also one of the most important components, if you learn how to use it properly you can reuse tons of code and become really productive, that's why Kakapo promotes the use of the Database but you can still don't use it and return whatever you want from the request handlers.
+
+**Factories**
+
+They come with (Faker)[https://github.com/Marak/faker.js] a cool library to generate fake data
+Just a brief example of what you can achieve with the db:
+
+```javascript
+import {Server, Router, Database} from 'kakapo';
+
+const router = new Router();
+const database = new Database();
+const server = new Server();
+
+db.register('user', faker => {
+  const name = faker.internet.userName();
+
+  return {
+    name,
+    avatar_url: faker.internet.avatar,
+    url: `https://api.github.com/users/${name}`,
+    type: "User",
+    company: faker.company.companyName, 
+    blog: faker.internet.url, 
+    location: faker.address.city,
+    email: faker.internet.email,
+    bio: faker.hacker.phrase,
+    created_at: faker.date.past, 
+    updated_at: faker.date.recent
+  }
+});
+db.create('user', 10);
+
+router.get('/users', (request, db) => {
+  return db.all('user');
+});
+
+router.get('/users/:user_id', (request, db) => {
+  return db.findOne('user', request.params.user_id);
+});
+
+router.post('/users', (request, db) => {
+  return db.push('user', request.params.body);
+});
+
+server.use(database);
+server.use(router);
+```
+
+
+**Relationships**
+
+## Response
+
+  -Code
+  -Body
+  -Headers
+
+## Serializers
+
+  -JSONApi  
+
+## Interceptors
+
+  -Fetch
+  -XMLHttpRequest
+
+## Scenarios
+  
+## Fake data
+As mention above, you can use [Fake](https://github.com/Marak/faker.js) for generate fake data, take a look at the full demo [here](http://marak.com/faker.js/). Also note that you can define nested properties and use Faker on them:
+
+```javascript
+db.register('user', faker => {
+  return {
+    user: {
+      name: faker.name.findName,
+      nick: 'nick'
+    },
+    company: faker.company.companyName, 
+    location: 'Valencia, Spain'
+  }
+});
+```
 </div>

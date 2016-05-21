@@ -87,6 +87,10 @@ body {
       overflow: auto;
     }
   }
+  .docs-content a{
+    text-decoration: underline;
+    color: cornflowerblue;
+  }
   .logo {
     height: 100px;
     margin: 8px;
@@ -101,7 +105,8 @@ body {
     color: #BA6051;
     text-align: center;
     width: 300px;
-
+    overflow: auto;
+    
     #markdown-toc {
       border-top: 1px solid $pink;
       text-align: left;
