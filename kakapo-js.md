@@ -402,21 +402,86 @@ server.use(router);
 
 **Relationships**
 
+Sometimes while mocking, you miss some sort of consistency in your responses. Let's say you have a blog and when you ask for comments of a post you return a **post_id** that doesn't match any of the post ids...
+
+You can solve that using relationships, they are designed to help you create this consistent state across all your requests. The methods are **belongsTo** and **hasMany**
+
+```javascript
+import {Server, Database, Router} from 'kakapo';
+
+const server = new Server();
+const db = new Database();
+const router = new Router();
+
+const blogFactory = () => ({
+  posts: db.hasMany('post'),
+  authors: db.hasMany('user', 2) //Notice how we expecify the author id, to force to return that record always
+});
+const postFactory = () => ({
+  title: 'Js for the lulz',
+  body: 'html body',
+  blog: db.belongsTo('blog')
+});
+const userFactory = () => ({
+  name: 'devlucky',
+  followers: 1000,
+});
+
+db.register('blog', blogFactory);
+db.register('post', postFactory);
+db.register('user', userFactory);
+
+db.create('post', 10);
+db.create('user', 5);
+db.create('blog', 1);
+```
+
 ## Response
 
-  -Code
-  -Body
-  -Headers
+The Response object is a helper class mostly used inside the request handlers to provide rich responses to your real handlers
+  
+```javascript
+import { Server, Response, Router } from 'kakapo';
 
-## Serializers
+const server = new Server();
+const router = new Router();
 
-  -JSONApi  
+router.get('/user/:user_id', request => {
+  const code = request.params.user_id < 10 ? 200 : 400;
+  const headers = {'X-request-date': new Date().getTime()};
 
-## Interceptors
+  return new Response(code, {status: code}, headers);
+});
 
-  -Fetch
-  -XMLHttpRequest
+server.use(router);
+```
 
+## Serializers
+
+JSONApi  
+
+## Interceptors
+
+This component is the one that actually handles the original request, is a private one but you can configure it in the Router. Just pass **strategies** in the constructor, by default both **fetch** and **XMLHttpRequest** are used.
+
+```javascript
+import {Server, Router} from 'kakapo';
+
+const server = new Server();
+const fetchRouter = new Router({
+  strategies: ['fetch']
+});
+const xhrRouter = new Router({
+  strategies: ['XMLHttpRequest']
+});
+
+server.use(fetchRouter);
+
+//LATER
+
+server.use(xhrRouter);
+  
+```
 ## Scenarios
   
 ## Fake data
@@ -434,4 +499,12 @@ db.register('user', faker => {
   }
 });
 ```
+
+## ROADMAP
+
+**Full suport for JSONApiSerializer**
+
+**Node.js compatibility**
+
+**Node.js interceptors**
 </div>
