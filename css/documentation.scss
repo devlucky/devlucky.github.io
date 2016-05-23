@@ -76,9 +76,9 @@ body {
   }
 }
 #docs {
-  background-color: #F2D1CB;
+  background-color: #BDECB6;
   display: flex;
-  border-top: 1px solid $pink;
+  border-top: 1px solid #BDECB6;
   height: 100vh;
   overflow: hidden;
 
@@ -108,26 +108,26 @@ body {
     overflow: auto;
     
     #markdown-toc {
-      border-top: 1px solid $pink;
+      border-top: 1px solid rgba(81, 146, 37, 0.47);
       text-align: left;
+      color: rgba(108, 130, 7, 0.91);
     }
     li {
       cursor: pointer;
-      transition: background-color .3s;
 
       ul a {
         padding-left: 20px;
-      }
-      &:hover {
       }
       a {
         padding: 10px;
         width: 100%;
         display: inline-block;
-        border-bottom: 1px solid;
+        border-bottom: 1px solid rgba(81, 146, 37, 0.47);
+        transition: all .3s;
 
         &:hover {
-          background-color: #f4d8d3;
+          background-color: #DCECB6;
+          color: rgba(75, 154, 63, 0.75);
         }
       }
       + li {

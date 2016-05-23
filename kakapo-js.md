@@ -196,7 +196,7 @@ const xhr = new XMLHttpRequest();
 xhr.onreadystatechange = () => {
   if (xhr.readyState !== 4) return;
 
-  const response = xhr.responseText;
+  const response = JSON.parse(xhr.responseText);
   console.log(response[0].id === 1);
   console.log(response[1].id === 2);
 };
@@ -220,7 +220,6 @@ const server = new Server();
 
 server.use(router);
 
-// app.js
 fetch('/users', users => {
   console.log(users[0].id === 1);
   console.log(users[1].id === 2);
@@ -229,24 +228,30 @@ fetch('/users', users => {
 
 ### Passthrough
 
+You don't need to do anything in order to keep your existing request working as they were before. Kakapo will just passthrough all the request that doesn't match any of the defined routes and fire the associated callback.
+
 ```javascript
 import {Router, Server} from 'Kakapo';
   
+const server = new Server();
 const router = new Router();
 
-router.get('/users/', (request) => {
-  return 
+router.get('/users', (request) => {
+  return 'Kakapo';
 });
 
 const server = new Server();
 
 server.use(router);
 
-// app.js
 fetch('/users', users => {
-  console.log(users[0].id === 1);
-  console.log(users[1].id === 2);
+  users == 'Kakapo';
 });
+
+fetch('https://api.github.com/users', users => {
+  //Real Github users data
+});
+
 ```
 
 ### Advanced example
@@ -264,7 +269,6 @@ const server = new Server();
 
 server.use(router);
 
-// app.js
 fetch('/users', users => {
   console.log(users[0].id === 1);
   console.log(users[1].id === 2);
