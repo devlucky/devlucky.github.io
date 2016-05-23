@@ -17,7 +17,11 @@ Kakapo its a full featured http mocking library, he allows you to entirely repli
 
 # Examples
 
+Before going deep into the Kakapo docs, we want to show you some examples of how to use Kakapo in your apps, in order to demonstrate how easy to integrate it is
+
 ## Basic
+
+Use the kakapo router to declare two custom routes and returning custom data.
 
 ```javascript
 import {Router, Server} from 'Kakapo';
@@ -46,7 +50,6 @@ const server = new Server();
 
 server.use(router);
 
-// app.js
 fetch('/users', users => {
   console.log(users[0].id === 1);
   console.log(users[1].id === 2);
@@ -60,6 +63,8 @@ fetch('/users/3', user => {
 
 ### Using the DB
   
+Combine the usage of the Router and the Database to have a more consistent way of managing the mock data. In the following example we are defining the user factory and later using some access methods provided by the db.
+
 ```javascript
 import {Database, Router, Server} from 'Kakapo';
 
@@ -79,7 +84,7 @@ router.get('/users', (request, db) => {
 
 router.get('/users/:user_id', (request, db) => 
   const userId = request.params.user_id;
-  return db.find('user', userId);
+  return db.findOne('user', userId);
 });
 
 const server = new Server();
@@ -87,7 +92,6 @@ const server = new Server();
 server.use(db);
 server.use(router);
 
-// app.js
 fetch('/users', users => {
   console.log(users[0].id === 1);
   console.log(users[1].id === 2);
@@ -100,7 +104,11 @@ fetch('/users/7', user => {
 });
 ```  
 
+As you can see, the database automatically handles the **id** generation, so you don't have to worry about assigning incremental id's of any kind.
+
 ### Unchaining the Router
+
+Next you will see how to use other features of the router and figure out the things you can build with it. In this example we show you how easy is to create a fake pagination handling, which is based in the actual requested page. 
 
 ```javascript
 import {Router, Server} from 'Kakapo';
@@ -146,7 +154,6 @@ const server = new Server();
 
 server.use(router);
 
-// app.js
 fetch('/users?page=1&count=3', response => {
   console.log(response.data.length === 3);
   console.log(response.metadata.previous_page === 1);
@@ -164,26 +171,38 @@ fetch(request, {method: 'POST', headers}).then(response => {
 
 ### Fetch & XMLHttpRequest support
 
-Kakapo have Fetch and XMLHttpRequest support by default, but you can always change that if you want
+Kakapo have Fetch and XMLHttpRequest support by default, but you can always change that if you want, see the [interceptors docs](#interceptors).
 
 ```javascript
-import {Database, Router, Server} from 'Kakapo';
+import {Router, Server} from 'Kakapo';
   
 const router = new Router();
 
 router.get('/users/', (request) => {
-  return 
+  return 'meh';
 });
 
 const server = new Server();
 
 server.use(router);
 
-// app.js
 fetch('/users', users => {
   console.log(users[0].id === 1);
   console.log(users[1].id === 2);
 });
+
+const xhr = new XMLHttpRequest();
+
+xhr.onreadystatechange = () => {
+  if (xhr.readyState !== 4) return;
+
+  const response = xhr.responseText;
+  console.log(response[0].id === 1);
+  console.log(response[1].id === 2);
+};
+xhr.open('GET', '/users', true);
+xhr.send();
+
 ```
 
 ### Database candyness
