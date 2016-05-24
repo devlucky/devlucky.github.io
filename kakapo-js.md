@@ -377,7 +377,7 @@ Database along with the Router is also one of the most important components, if 
 
 **Factories**
 
-They come with (Faker)[https://github.com/Marak/faker.js] a cool library to generate fake data
+They come with [Faker](https://github.com/Marak/faker.js) a cool library to generate fake data
 Just a brief example of what you can achieve with the db:
 
 ```javascript
@@ -481,7 +481,35 @@ server.use(router);
 
 ## Serializers
 
-JSONApi  
+This is another component very familiar in backend laguages, Serializers offers you a way to abstract the **render** part of your entities. 
+In this example we cover a common case in which you have different versions of your Api and you want to represent that in Kakapo in the same way
+
+```javascript
+const ApiV2Serializer = (record, type) => {
+  const id = record.id;
+  const metadata = {created_at: new Date()};
+  const attributes = Object.assign({}, record, metadata);
+
+  return {
+    id,
+    type,
+    attributes
+  };
+};
+
+const db = new Database();
+
+db.register('user', () => ({
+  firstName: 'Hector',
+  lastName: 'Zarco',
+  age: 24,
+}), ApiV2Serializer);
+
+db.register('comment', () => ({
+  text: 'msg'
+}), ApiV2Serializer);
+
+```
 
 ## Interceptors
 
@@ -505,10 +533,48 @@ server.use(fetchRouter);
 server.use(xhrRouter);
   
 ```
+
 ## Scenarios
-  
+
+```javascript
+import {Server, Router, Database} from 'kakapo';
+
+const userFactory = (faker) => {
+  return {
+    name: faker.name.findName,
+    age: 24,
+    city: 'Valencia'
+  }
+};
+const usersHandler = (request, db) => db.all('user');
+const wifiServer = new Server({requestDelay: 150});
+const threeGServer = new Server({requestDelay: 1000});
+const router = new Router();
+const chillDB = new Database();
+const stressfulDB = new Database();
+
+chillDB.register('user', userFactory);
+chillDB.create('user', 5);
+
+stressfulDB.register('user', userFactory);
+stressfulDB.create('user', 1000);
+
+wifiServer.get('/users', usersHandler);
+threeGServer.get('/users', usersHandler);
+
+//Pick the server with more latency if you want to check how the spinner looks like
+//server.use(wifiServer);
+server.use(threeGServer);
+
+//Here you just have to switch between different databases in order to test the UI with tons of users
+//server.use(chillDB);
+server.use(stressfulDB);
+
+```  
+
 ## Fake data
-As mention above, you can use [Fake](https://github.com/Marak/faker.js) for generate fake data, take a look at the full demo [here](http://marak.com/faker.js/). Also note that you can define nested properties and use Faker on them:
+
+As mention above, you can use [Faker](https://github.com/Marak/faker.js) for generate fake data, take a look at the full demo [here](http://marak.com/faker.js/). Also note that you can define nested properties and use Faker on them:
 
 ```javascript
 db.register('user', faker => {
