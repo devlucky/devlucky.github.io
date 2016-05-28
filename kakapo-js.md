@@ -207,23 +207,89 @@ xhr.send();
 
 ### Database candyness
 
-```javascript
-import {Database, Router, Server} from 'Kakapo';
-  
-const router = new Router();
+Check how easy to build a consistent CRUD Api with the kakapo db.
 
-router.get('/users/', (request) => {
-  return 
+```javascript
+import {Database, Router, Server, Response as KakapoResponse} from 'Kakapo';
+  
+const sever = new Server();
+const router = new Router();
+const databse = new Database();
+
+database.register('user', faker => {
+  return {
+    firstName: faker.name.firstName,
+    lastName: faker.name.lastName,
+    age: 24
+  };
+});
+
+database.create('user', 5);
+
+router.get('/users', (request, db) => {
+  return db.all('user');
+});
+router.post('/users', (request, db) => {
+  const user = JSON.parse(request.body);
+
+  db.push('user', user);
+
+  return user;
+});
+router.put('/users/:user_id', (request, db) => {
+  const newLastName = JSON.parse(request.body).lastName;
+  const user = db.findOne('user', request.params.user_id);
+
+  user.lastName = newLastName;
+  user.save();
+
+  return user;
+});
+router.delete('/users/:user_id', (request, db) => {
+  const user = db.findOne('user', request.params.user_id);
+  const code = user ? 200 : 400;
+  const body = {code};
+  
+  user && user.delete();
+
+  return new KakapoResponse(code, body);
 });
 
 const server = new Server();
 
+server.use(database);
 server.use(router);
 
-fetch('/users', users => {
-  console.log(users[0].id === 1);
-  console.log(users[1].id === 2);
-});
+const getUsers = () => {
+  return fetch('/users').then(r => r.json());
+}
+
+const createUser = (user) => {
+  return $.post('/users', user);
+};
+
+const updateLast = () => {
+  return $.ajax({
+    url: '/users/6',
+    method: 'PUT',
+    data: {lastName: 'Zarco'}
+  });
+};
+
+const deleteFirst = () => {
+  return $.ajax({
+    url: '/users/1',
+    method: 'DELETE'
+  });
+};
+
+getUsers() // users[0].id === 1, users.length === 5
+  .then(createUser.bind(null, {firstName: 'Hector'})) // response.id === 6, response.firstName === 'Hector'
+  .then(deleteFirst) // response.code === 200
+  .then(getUsers) // users[0].id == 2, users[4].id == 6, users.length == 5
+  .then(updateLast) // user.id == 6, user.lastName == 'Zarco'
+  .then(getUsers) // users.length == 5
+
 ```
 
 ### Passthrough
@@ -589,7 +655,7 @@ db.register('user', faker => {
 });
 ```
 
-## ROADMAP
+# ROADMAP
 
 **Full suport for JSONApiSerializer**
 
