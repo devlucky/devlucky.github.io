@@ -347,7 +347,7 @@ fetch('/users', users => {
 
 Every project needs a TODO App, so here is the Kakapo one. Straightforward vanilla js app, uses the **fetch api** for the networking part.
 
-[Todo-app repo](https://github.com/devlucky/Kakapo.js/tree/master/examples/todo-app)
+[Check the demo](https://kakapo-todo-app.firebaseapp.com/) or [look at the code](https://github.com/devlucky/Kakapo.js/tree/master/examples/todo-app)
 
 ![](http://cl.ly/1K1z1G102X1P/Screen%20Recording%202016-05-16%20at%2010.06%20PM.gif)
 
@@ -355,7 +355,7 @@ Every project needs a TODO App, so here is the Kakapo one. Straightforward vanil
 
 Basic github users search example, based 100% on the (Github Api)[https://developer.github.com/v3]. It shows you how easy is to replicate the logic of a backend with Kakapo and iterate faster when building the UI. This example also uses jQuery just to demostrate the compatibility with Kakapo.
 
-[Github explorer repo](https://github.com/devlucky/Kakapo.js/tree/master/examples/github-explorer)
+[Check the demo](https://kakapo-github-explorer.firebaseapp.com) or [look at the code](https://github.com/devlucky/Kakapo.js/tree/master/examples/github-explorer)
 
 ![](https://raw.github.com/devlucky/Kakapo.js/master/examples/github-explorer/demo.gif)
 
