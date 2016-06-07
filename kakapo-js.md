@@ -15,6 +15,13 @@ section_class: js-banner
 
 Kakapo its a full featured http mocking library, he allows you to entirely replicate your backend logic in simple and declaritive way directly in the browser. This way you can easily prototype and develop the whole Application without backend and just deactivate Kakapo when you go production. In order to achieve that Kakapo gives you a set of utilities like Routing, Database, Response, Request and so on...
 
+## Installation
+
+`$ npm i kakapo -D`
+
+`$ bower i kakapo -D`
+
+
 # Examples
 
 Before going deep into the Kakapo docs, we want to show you some examples of how to use Kakapo in your apps, in order to demonstrate how easy to integrate it is
