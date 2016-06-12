@@ -17,6 +17,8 @@ Kakapo its a full featured http mocking library, he allows you to entirely repli
 
 ## Installation
 
+Check the repo [github.com/devlucky/Kakapo.js](https://github.com/devlucky/Kakapo.js)
+
 `$ npm i kakapo -D`
 
 `$ bower i kakapo -D`
