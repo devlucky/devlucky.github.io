@@ -327,26 +327,6 @@ fetch('https://api.github.com/users', users => {
 
 ```
 
-### Advanced example
-
-```javascript
-import {Router, Server} from 'Kakapo';
-  
-const router = new Router();
-
-router.get('/users/', (request) => {
-  return 
-});
-
-const server = new Server();
-
-server.use(router);
-
-fetch('/users', users => {
-  console.log(users[0].id === 1);
-  console.log(users[1].id === 2);
-});
-```
 
 # Demo Apps
 
@@ -609,6 +589,10 @@ server.use(xhrRouter);
 
 ## Scenarios
 
+The **scenario** concept is nothing else than the ability of having different presets of Kakapo, like router, database, etc... and later, allow the user to decide when he wants to use one of other.  
+
+Let's say you want to check how the spinners looks in your app, in that case you probably will put a higher value as a **requestDelay**, to make sure that the requests are intercepted late and you can check the UI... other good use case might be one in which you want to test the performance of a view when you have thousands of elements, in order to achieve that you will just need to pass a hight number to the **create** method of the **Database**: 
+
 ```javascript
 import {Server, Router, Database} from 'kakapo';
 
@@ -661,6 +645,10 @@ db.register('user', faker => {
   }
 });
 ```
+
+# Browser support
+
+Kakapo.js relies on [WeakMap](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/WeakMap) but we don't ship a polyfill with the library because the [current support](http://kangax.github.io/compat-table/es6/#test-WeakMap) is fine and this library should only we used for development purposes **never for production usage**, anyways you can find a [WeakMap polyfill here](https://github.com/Benvie/WeakMap).
 
 # ROADMAP
 
