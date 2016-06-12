@@ -8,7 +8,8 @@
     {% include github_ribbon.html %}
     <section id="banner" class="{{page.section_class}}">
       <h1>
-      {{ page.title }} <a href="{{ page.project_url }}" target="_blank"><i class="fa fa-github github-link" aria-hidden="true"></i></a>
+      {{ page.title }} 
+      <a class="github-button" href="https://github.com/devlucky/Kakapo.js" data-icon="octicon-star" data-style="mega" data-count-href="/devlucky/Kakapo.js/stargazers" data-count-api="/repos/devlucky/Kakapo.js#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star devlucky/Kakapo.js on GitHub">Star</a>
       </h1>
       <div class="motto">
         <div class="motto-line"></div>
@@ -18,5 +19,6 @@
     </section>
     <section id="docs">{{content}}</section>
     <script src="js/app.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>
