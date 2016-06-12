@@ -3,6 +3,8 @@
 ---
 @import "commons";
 
+$mobile-width: 700px;
+
 html, body {
 }
 body {
@@ -19,6 +21,7 @@ body {
   align-items: center;
   background-color: rgba(black, 0.5);
   color: white;
+  text-align: center;
 
   h1 {
     font-size: 55px;
@@ -33,6 +36,7 @@ body {
   .motto {
     font-size: 25px;
     margin-top: 10px;
+    max-width: 80%;
   }
   .learn-more {
     display: flex;
@@ -136,12 +140,20 @@ body {
     a + a li {
       border-top: 1px solid $pink;
     }
+
+    @media screen and (max-width: $mobile-width) {
+      width: auto;
+    }
   }
   .docs-content {
     background-color: white;
     flex: 1;
     padding: 20px;
     overflow: hidden;
+  }
+
+  @media screen and (max-width: $mobile-width) {
+    display: block;
   }
 }
 @keyframes learn-more-animation {
