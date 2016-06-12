@@ -85,6 +85,14 @@ body {
   border-top: 1px solid #BDECB6;
   height: 100vh;
   overflow: hidden;
+  
+  @media screen and (max-width: $mobile-width) {
+    display: block;
+
+    &.scrollable{
+      overflow: auto !important; 
+    }
+  }
 
   &.scrollable {
     .docs-content {
@@ -111,6 +119,10 @@ body {
     width: 300px;
     overflow: auto;
     
+    @media screen and (max-width: $mobile-width) {
+      width: auto;
+    }
+
     #markdown-toc {
       border-top: 1px solid rgba(81, 146, 37, 0.47);
       text-align: left;
@@ -140,20 +152,12 @@ body {
     a + a li {
       border-top: 1px solid $pink;
     }
-
-    @media screen and (max-width: $mobile-width) {
-      width: auto;
-    }
   }
   .docs-content {
     background-color: white;
     flex: 1;
     padding: 20px;
     overflow: hidden;
-  }
-
-  @media screen and (max-width: $mobile-width) {
-    display: block;
   }
 }
 @keyframes learn-more-animation {
