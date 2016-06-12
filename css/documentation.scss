@@ -125,6 +125,7 @@ body {
     
     @media screen and (max-width: $mobile-width) {
       width: auto;
+      position: static !important;
     }
 
     #markdown-toc {
@@ -162,6 +163,10 @@ body {
     flex: 1;
     padding: 20px;
     overflow: hidden;
+
+    @media screen and (max-width: $mobile-width) {
+      margin-left: 0 !important;
+    }
   }
 }
 @keyframes learn-more-animation {
