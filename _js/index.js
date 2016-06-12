@@ -9,12 +9,13 @@ function addEvents() {
 }
 
 function onScroll() {
-  const scrollPosition = document.body.scrollTop;
+  // const scrollPosition = document.body.scrollTop;
+  const scrollPosition = window.pageYOffset;
   const winHeight = window.innerHeight;
   const classList = document.getElementById('docs').classList;
   const className = 'scrollable';
 
-  if (winHeight - scrollPosition < 10) {
+  if (winHeight - scrollPosition < 5) {
     !classList.contains(className) && classList.add(className);
   } else {
     classList.contains(className) && classList.remove(className);

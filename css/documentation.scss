@@ -87,21 +87,20 @@ body {
   background-color: #BDECB6;
   display: flex;
   border-top: 1px solid #BDECB6;
-  height: 100vh;
-  overflow: hidden;
   
   @media screen and (max-width: $mobile-width) {
     display: block;
-
-    &.scrollable{
-      overflow: auto !important; 
-      -webkit-overflow-scrolling: touch;
-    }
   }
 
   &.scrollable {
     .docs-content {
-      overflow: auto;
+      margin-left: 300px;
+    }
+
+    nav{
+      position: fixed;
+      top: 0;
+      left: 0;
     }
   }
   .docs-content a{
