@@ -101,6 +101,7 @@ body {
       position: fixed;
       top: 0;
       left: 0;
+      height: 100vh;
     }
   }
   .docs-content a{
@@ -122,10 +123,11 @@ body {
     text-align: center;
     width: 300px;
     overflow: auto;
-    
+
     @media screen and (max-width: $mobile-width) {
       width: auto;
       position: static !important;
+      height: auto !important;
     }
 
     #markdown-toc {
