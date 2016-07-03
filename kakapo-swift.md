@@ -1,24 +1,21 @@
 ---
-layout: documentation
+layout: documentationPRO
 title: Kakapo
 motto: Next generation mocking framework in Swift
-image_path: kakapo.gif
+logo: kakapo.gif
 project_url: https://github.com/devlucky/Kakapo
 section_class: swift-banner
+filter: swift
+repo_name: kakapo
 ---
 
-{% include toc.md %}
+  * TOC
+  {:toc}
+
+## Test
 
-<div class="docs-content" markdown="1">
-  
-# Getting started
+ABC
 
-# Examples
+## Test2
 
-## Basic
-
-```swift
-let fo = "bar"
-
-```
-</div>
+CDE

@@ -4,3 +4,8 @@
   logo: kakapo.gif
   description: The next level mocking framework, discover a new way of declare http mocks, directly in your browser.
                  Kakapo.js gives you a set of utilities to exactly recreate your real backend.
+- name: Kakapo.swift
+  link: kakapo-swift
+  header_img: js-bg.jpg
+  logo: kakapo.gif
+  description: Mock server behaviors and APIs, prototype and stop waiting for your backend's APIs.

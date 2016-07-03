@@ -1,0 +1,25 @@
+<section id="team">
+      <h2>Team</h2>
+      <div class="section__content">
+        <ul>
+          {% for member in site.data.team %}
+          
+          {% if page.filter != nil %}
+          {% unless member.filter contains page.filter %}
+            {% continue %}
+          {% endunless %}
+          {% endif %}
+            <li>
+              <a href="//twitter.com/{{member.twitter}}" target="_blank">
+                <img class="member-avatar" src="assets/images/{{member.avatar}}" alt="{{member.name}}">
+              </a>
+              <div class="member-name">
+                <a href="//twitter.com/{{member.twitter}}" target="_blank">
+                  {{member.nickname}}
+                </a>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+</section>
