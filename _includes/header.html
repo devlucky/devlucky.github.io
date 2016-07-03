@@ -1,14 +1,12 @@
-<section id="bio">
+<section class="page-header">
 	<div class="section__content">
-		<div class="bio-content">
-		  <div class="bio-content-left">
-			<div class="site-logo">
-			  <img src="{{ site.images-path }}{{ page.logo }}" alt="Logo">
-			</div>
-			<div class="site-title">{{page.title}}</div>
+		<div class="header-content">
+		  <div class="header-content-left">
+			<div class="header-logo" style="background-image: url({{ site.images-path }}{{ page.logo }})"></div>
+			<div class="header-title">{{page.title}}</div>
 		  </div>
-		  <div class="bio-content-right">
-			<div class="site-description">{{page.motto}}</div>
+		  <div class="header-content-right">
+			<div>{{page.motto}}</div>
 			{% if page.repo_name != nil %}
 				<a class="github-button" href="https://github.com/devlucky/{{ page.repo_name }}" data-icon="octicon-star" data-style="mega" data-count-href="/devlucky/{{ page.repo_name }}/stargazers" data-count-api="/repos/devlucky/{{ page.repo_name }}#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star devlucky/{{ page.repo_name }} on GitHub">Star</a>
 			{% endif %}

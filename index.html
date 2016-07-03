@@ -2,17 +2,14 @@
 layout: default
 ---
 
-<section id="bio">
+<section class="page-header">
   <div class="section__content">
-	<div class="bio-content">
-	  <div class="bio-content-left">
-		<div class="site-logo">
-		  <img src="assets/images/devlucky-logo.png" alt="Logo">
-		</div>
-		<div class="site-title">{{site.title}}</div>
-		
+	<div class="header-content">
+	  <div class="header-content-left">
+		<div class="header-logo" style="background-image:url(assets/images/devlucky-logo.png)"></div>
+		<div class="header-title">{{site.title}}</div>
 	  </div>
-	  <div class="bio-content-right">
+	  <div class="header-content-right">
 		<div class="site-description">{{site.description}}</div>
 		<ul class="social-links">
 		  <li>
@@ -35,8 +32,8 @@ layout: default
 	</div>
   </div>
 </section>
-<section id="projects">
-  <h2>Projects</h2>
+<section class="page-content">
+  <h1>Projects</h1>
   <div class="section__content">
 	<ul>
 	  {% for project in site.data.projects %}
