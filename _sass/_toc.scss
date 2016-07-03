@@ -1,0 +1,29 @@
+#markdown-toc {
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 270px;
+  border: 1px solid #ddd;
+  background-color: #eef;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  font-size: 1.5em;
+  li {
+    text-align: left;
+    &:before {
+        content: "";
+      }
+    li {
+      margin-left: 15px;
+      list-style: none;
+      font-size: 0.8em;
+      &:before {
+        content: "- ";
+      }
+    }
+  }
+  a {
+    color: #444;
+  }
+}
