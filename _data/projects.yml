@@ -8,4 +8,4 @@
   link: kakapo-swift
   header_img: js-bg.jpg
   logo: kakapo.gif
-  description: Mock server behaviors and APIs, prototype and stop waiting for your backend's APIs.
+  description: Dynamically Mock server behaviors and responses. Kakapo allows you to replicate your backend APIs and logic. With Kakapo you can easily prototype your application based on your API specifications.
