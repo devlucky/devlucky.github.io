@@ -1,56 +1,95 @@
-.home-page {
-  background-color: #F6F9FE;
+html, body {
+	min-height: 100vh;
+}
+
+.page-body {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
 
   section {
     position: relative;
     
     .section__content{
-      overflow: auto;
+      overflow: hidden;
       padding: 20px;
     }
-    h2 {
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%);
+    h1, h2 {
       background-color: white;
       padding: 0 10px;
       border-radius: 5px;
       border: 1px solid #eee;
+      
+      &:not(h2) {
+		position: absolute;
+	    top: -20px;
+	    left: 50%;
+	    transform: translateX(-50%);
+      }
+      &:not(h1) {
+        display: inline-block;
+        margin-left: 50%;
+        transform: translate(-50%);
+        
+		 &:before {
+			content: " ";
+			border-top: 1px solid #eee;
+			height: 1px;
+			width: 100vw;
+			position: absolute;
+			left: -50vw;
+			top: 50%;
+			transform: translate(-50%);
+		  }  
+		  &:after {
+			content: " ";
+			border-top: 1px solid #eee;
+			height: 1px;
+			width: 100vw;
+			position: absolute;
+			right: -150vw;
+			top: 50%;
+			transform: translate(-50%);
+		  }	
+      }
     }
   }
-  #bio {
+  .page-header {
     background-color: #E6ECF7;
-    height: 200px;
+    min-height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    .bio-content {
-      display: flex;
+    .header-content {
+		display: flex;
 
       > div {
+        display: flex;
+        flex-direction: column;
         padding: 10px 15px;
       }
     }
-    .site-description {
-      width: 240px;
+    .header-title {
+        margin-top: 10px;
+    	text-align: center;
     }
-    .bio-content-left {
+    .header-content-left {
+      justify-content: center;
       color: #54AF6E;
       border-right: 1px solid rgba(black, 0.1);
     }
-    .site-title{
-      margin-top: 22px;
+    .header-content-right {
+        justify-content: space-between;
+    	max-width: 245px;
     }
-    .bio-content-right {
-    }
-    .site-logo {
-      img {
+    .header-logo {
         border-radius: 100%;
         height: 70px;
-        margin-bottom: 10px;
-      }
+        width: 70px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color: #54AF6E;
     }
     .social-links {
       display: flex;
@@ -76,7 +115,8 @@
       }
     }
   }
-  #projects {
+  .page-content {
+  	flex: 1;
     background-color: white;
     padding: 15px 0;
 
@@ -154,6 +194,10 @@
         }
       }
     }
+  }
+  .page-post {
+  	margin: 0 auto;
+    max-width: 700px;
   }
   #team {
     background-color: #F6F9FE;

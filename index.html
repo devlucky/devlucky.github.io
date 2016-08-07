@@ -1,3 +1,65 @@
 ---
 layout: default
 ---
+
+<section class="page-header">
+  <div class="section__content">
+	<div class="header-content">
+	  <div class="header-content-left">
+		<div class="header-logo" style="background-image:url(assets/images/devlucky-logo.png)"></div>
+		<div class="header-title">{{site.title}}</div>
+	  </div>
+	  <div class="header-content-right">
+		<div class="site-description">{{site.description}}</div>
+		<ul class="social-links">
+		  <li>
+			<a href="//twitter.com/{{site.twitter_username}}" target="_blank">
+			  <i class="fa fa-twitter" aria-hidden="true"></i>
+			</a>
+		  </li>
+		  <li>
+			<a href="//github.com/{{site.github_username}}" target="_blank">
+			  <i class="fa fa-github" aria-hidden="true"></i>
+			</a>
+		  </li>
+		  <li>
+			<a href="//medium.com/@{{site.medium_username}}" target="_blank">
+			  <i class="fa fa-medium" aria-hidden="true"></i>
+			</a>
+		  </li>
+		</ul>
+	  </div>
+	</div>
+  </div>
+</section>
+<section class="page-content">
+  <h1>Projects</h1>
+  <div class="section__content">
+	<ul>
+	  {% for project in site.data.projects %}
+		<li class="project">
+		  <div class="project__content">
+			<header style="background-image: url({{site.images-path}}{{project.header_img}});">
+			  <div class="project-logo">
+				<img src="https://sdl-stickershop.line.naver.jp/products/0/0/1/1087538/LINEStorePC/main.png?__=20150924" alt="">
+				<!-- <img src="{{site.images-path}}{{project.logo}}" alt="{{project.name}}"> -->
+			  </div>
+			</header>
+			<div class="project-content">
+			  <div class="project-name">
+				{{project.name}}
+			  </div>
+			  <div class="project-description">
+				{{project.description}}
+			  </div>
+			  <a href="{{project.link}}" class="visit-project">
+				Visit
+			  </a>
+			</div>
+		  </div>
+		</li>
+	  {% endfor %}
+	</ul>
+  </div>
+</section>
+{% include team.html %}

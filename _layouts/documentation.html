@@ -9,7 +9,9 @@
     <section id="banner" class="{{page.section_class}}">
       <h1>
       {{ page.title }} 
-      <a class="github-button" href="https://github.com/devlucky/Kakapo.js" data-icon="octicon-star" data-style="mega" data-count-href="/devlucky/Kakapo.js/stargazers" data-count-api="/repos/devlucky/Kakapo.js#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star devlucky/Kakapo.js on GitHub">Star</a>
+      {% if page.repo_name != nil %}
+      <a class="github-button" href="https://github.com/devlucky/{{ page.repo_name }}" data-icon="octicon-star" data-style="mega" data-count-href="/devlucky/{{ page.repo_name }}/stargazers" data-count-api="/repos/devlucky/{{ page.repo_name }}#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star devlucky/{{ page.repo_name }} on GitHub">Star</a>
+      {% endif %}
       </h1>
       <div class="motto">
         <div class="motto-line"></div>
